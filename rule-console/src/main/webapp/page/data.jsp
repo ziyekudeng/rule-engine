@@ -8,11 +8,13 @@
     <link rel="stylesheet" type="text/css" href="media/themes/icon.css">
     <script type="text/javascript" src="media/jquery.min.js"></script>
     <script type="text/javascript" src="media/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="media/jquery.datagrid.js"></script>
+    <script type="text/javascript" src="media/jquery.edatagrid.js"></script>
 
 </head>
 <body>
 <table id="dg" class="easyui-datagrid"
-       data-options="url:'/dataA.htm',method:'get',singleSelect:true,fit:true,fitColumns:true,toolbar:'#toolbar'">
+       data-options="url:'dataA.htm',method:'get',singleSelect:true,fit:true,fitColumns:true,toolbar:'#toolbar'">
     <thead>
         <tr>
             <th data-options="field:'name'" width="80">名称（英文）</th>

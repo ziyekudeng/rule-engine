@@ -11,6 +11,8 @@
     <script type="text/javascript" src="media/jquery.min.js"></script>
     <script type="text/javascript" src="media/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="media/easyui-tabs.js"></script>
+    <script type="text/javascript" src="media/jquery.datagrid.js"></script>
+    <script type="text/javascript" src="media/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="media/rule.js"></script>
 
 </head>
@@ -56,7 +58,7 @@
 
 <!--中间栏-->
 <div data-options="region:'center',title:'编辑窗口',iconCls:'icon-ok'">
-    <div id="main-tabs" class="easyui-tabs" data-options="fit:true,border:false" style="overflow:hidden;">
+    <div id="main-tabs" class="easyui-tabs" data-options="fit:true,border:false" style="width:180px;padding1:1px;">
 
     </div>
 </div>
@@ -64,7 +66,7 @@
 <script type="text/javascript">
 
     $('#tree_menu').tree({
-        url:'/menu.htm',
+        url:'menu.htm',
         onClick: function(node){
             var type=node.iconCls.replace('icon-', '');
             clickNode(type,node.id);
@@ -84,29 +86,29 @@
 
         var href; var title;
         if(type=='scene'){
-            href = "/scene.htm?id="+theUuid;
+            href = "scene.htm?id="+theUuid;
             title = "场景";
         }
         else if(type=='package'){
-            href = "/package.htm?id="+theUuid;
+            href = "package.htm?id="+theUuid;
             title = "规则集";
         }
         else if(type=='rule'){
-            href = "/rule.htm?id="+theUuid;
+            href = "rule.htm?id="+theUuid;
             title = "规则";
         }
         else if(type=='data'){
             addTabs([{
-                href : "/data.htm?type=0&id="+theUuid,
+                href : "data.htm?type=0&id="+theUuid,
                 title : "传入数据"
             },{
-                href : "/data.htm?type=1&id="+theUuid,
+                href : "data.htm?type=1&id="+theUuid,
                 title : "临时数据"
             },{
-                href : "/data.htm?type=2&id="+theUuid,
+                href : "data.htm?type=2&id="+theUuid,
                 title : "外部调用"
             },{
-                href : "/data.htm?type=3&id="+theUuid,
+                href : "data.htm?type=3&id="+theUuid,
                 title : "常量数据"
             }]);
             return;

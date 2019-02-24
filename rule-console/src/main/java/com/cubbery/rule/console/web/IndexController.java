@@ -14,7 +14,6 @@ import com.google.common.collect.Lists;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,79 +35,106 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexController extends BaseAjaxController {
 
     @RequestMapping("/console.htm")
-    public String index(){
+    public String console() {
         return "console";
     }
 
+    @RequestMapping("")
+    public String loginiin() {
+        return "detail";
+    }
+    @RequestMapping("/detail.htm")
+    public String detail() {
+        return "detail";
+    }
+
+    @RequestMapping("/index.htm")
+    public String index() {
+        return "index";
+    }
+
+    @RequestMapping("/login.htm")
+    public String login() {
+        return "login";
+    }
+
     @RequestMapping("/scene.htm")
-      public String scene(Long sceneId){
+    public String scene(Long sceneId) {
         return "/page/scene";
     }
 
     @RequestMapping("/package.htm")
-    public String packages(Long packageId){
+    public String packages(Long packageId) {
         return "/page/scene";
     }
 
     @RequestMapping("/rule.htm")
-    public String rule(Long ruleId){
+    public String rule(Long ruleId) {
         return "/page/rule";
     }
 
     @RequestMapping(value = "/data.htm")
-    public String data(Long sceneId,String type,Model model){
-        model.addAttribute("sceneId",sceneId);
-        model.addAttribute("type",type);
+    public String data(Long sceneId, String type, Model model) {
+        model.addAttribute("sceneId", sceneId);
+        model.addAttribute("type", type);
         return "/page/data";
     }
 
     @RequestMapping(value = "/dataA.htm")
-    public void dataA(Long sceneId,String type,HttpServletResponse response){
-        outJsonString(response,sceneVo.getDataRepositories());
+    public void dataA(Long sceneId, String type, HttpServletResponse response) {
+        outJsonString(response, sceneVo.getDataRepositories());
     }
 
     @RequestMapping("/menu.htm")
-    public void menu(HttpServletRequest request,HttpServletResponse response){
+    public void menu(HttpServletRequest request, HttpServletResponse response) {
         Menu menu = Menu.fromScene(sceneVo);
-        outJsonString(response,Lists.newArrayList(menu));
+        outJsonString(response, Lists.newArrayList(menu));
     }
 
     static SceneVo sceneVo = new SceneVo();
+
     static {
         //init
-        sceneVo.setDisplayName("工资计算");
+        sceneVo.setDisplayName("理赔通道规则");
         sceneVo.setSceneName("salary");
         sceneVo.setId(1L);
 
         DataVo dataVo = new DataVo();
         dataVo.setDataType(DataType.INCOME);
         dataVo.setDire(DataDire.IN);
-        dataVo.setDisplayName("职位");
+        dataVo.setDisplayName("投保人年龄");
         dataVo.setName("position");
         dataVo.setType("java.lang.String");
 
         DataVo dataVo1 = new DataVo();
         dataVo1.setDataType(DataType.TEMP);
         dataVo1.setDire(DataDire.IO);
-        dataVo1.setDisplayName("基本工资");
+        dataVo1.setDisplayName("赔付金额");
         dataVo1.setName("salaryBasic");
         dataVo1.setType("java.lang.Double");
 
-        sceneVo.setDataRepositories(Lists.newArrayList(dataVo,dataVo1));
+        DataVo dataVo2 = new DataVo();
+        dataVo2.setDataType(DataType.INCOME);
+        dataVo2.setDire(DataDire.IN);
+        dataVo2.setDisplayName("延迟报案天数");
+        dataVo2.setName("position");
+        dataVo2.setType("java.lang.String");
+
+        sceneVo.setDataRepositories(Lists.newArrayList(dataVo, dataVo1, dataVo2));
 
         RuleVo ruleVo = new RuleVo();
-        ruleVo.setDisplayName("基本工资计算");
+        ruleVo.setDisplayName("速赔");
         ruleVo.setName("salary-basic");
         ruleVo.setType(RuleType.SINGLE);
         ruleVo.setId(11L);
 
         RuleVo ruleVo1 = new RuleVo();
-        ruleVo1.setDisplayName("所得税计算");
+        ruleVo1.setDisplayName("快赔");
         ruleVo1.setName("income-tax");
         ruleVo1.setType(RuleType.SETS);
         ruleVo1.setId(12L);
 
         //...
-        sceneVo.setRuleRepositories(Lists.newArrayList(ruleVo,ruleVo1));
+        sceneVo.setRuleRepositories(Lists.newArrayList(ruleVo, ruleVo1));
     }
 }

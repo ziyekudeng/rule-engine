@@ -44,7 +44,7 @@
 
 <!--中间栏-->
 <div data-options="region:'center',title:'操作窗口',iconCls:'icon-ok'">
-    <div id="main-tabs" class="easyui-tabs" data-options="fit:true,border:false" style="overflow:hidden;">
+    <div id="main-tabs" class="easyui-tabs" data-options="fit:true,border:false" style="width:20px;padding1:1px;">
 
     </div>
 </div>
@@ -52,7 +52,7 @@
 <script type="text/javascript">
 
     $('#tree_menu').tree({
-        url:'/scenes.htm',
+        url:'scene.htm',
         onClick: function(node){
 
         }
@@ -60,14 +60,3 @@
 </script>
 </html>
 
-<div id="mm_menu" class="easyui-menu"  style="width:150px;">
-    <div data-options="iconCls:'icon-undo'">撤销</div>
-    <div data-options="iconCls:'icon-redo'">Redo</div>
-    <div class="menu-sep"></div>
-    <div>剪切</div>
-    <div>复制</div>
-    <div>粘贴</div>
-    <div class="menu-sep"></div>
-    <div data-options="iconCls:'icon-remove'">删除</div>
-    <div>全选</div>
-</div>

@@ -29,12 +29,12 @@ public enum RuleCodeEnum implements IEnum {
         this.desc = desc;
     }
 
-    @Override
+    
     public String getCode() {
         return code;
     }
 
-    @Override
+    
     public String getDesc() {
         return desc;
     }
